@@ -6,3 +6,16 @@ Dependencies included in project, in lib folder
 
 Plugin for running tests in Scala IDE (based on Eclipse) is "ScalaTest for Scala IDE", not installed by default.
 
+Running
+
+To run whole package:
+	(on package) Run As -> ScalaTest - Package
+	
+To run single file:
+	manually create run configuration of type ScalaTest, inputing class name
+	automatic way described on site does not work, issue is described but without solution
+	class name is not searchable in dialog, also described
+	
+To run single test in file:
+	manually create run configuration, with test name
+	how to do it in test that doesn't have name?
