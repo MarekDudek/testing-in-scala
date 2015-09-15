@@ -1,0 +1,2 @@
+http://www.scalatest.org/
+https://www.scalacheck.org/

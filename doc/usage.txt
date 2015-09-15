@@ -1,0 +1,8 @@
+
+Tested on Scala 2.11.5
+
+Dependencies included in project, in lib folder
+* ScalaTest 2.2.4 for Scala 2.11.x
+
+Plugin for running tests in Scala IDE (based on Eclipse) is "ScalaTest for Scala IDE", not installed by default.
+
