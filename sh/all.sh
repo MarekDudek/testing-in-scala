@@ -2,3 +2,4 @@
 
 ./sh/example-spec.sh
 ./sh/styles.sh
+./sh/assertions.sh

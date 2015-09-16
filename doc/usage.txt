@@ -32,3 +32,9 @@ Running
 			import testing.example._
 			run(new ExampleSpec)
 			
+
+TODO:
+	triple equals
+		tolerance
+		enforce type constraints
+	assert compiles
