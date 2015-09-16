@@ -8,14 +8,27 @@ Plugin for running tests in Scala IDE (based on Eclipse) is "ScalaTest for Scala
 
 Running
 
-To run whole package:
-	(on package) Run As -> ScalaTest - Package
+	To run whole package:
+		(on package) Run As -> ScalaTest - Package
+		
+	To run single file:
+		manually create run configuration of type ScalaTest, inputing class name
+		automatic way described on site does not work, issue is described but without solution
+		class name is not searchable in dialog, also described
+		
+	To run single test in file:
+		manually create run configuration, with test name
+		how to do it in test that doesn't have name?
 	
-To run single file:
-	manually create run configuration of type ScalaTest, inputing class name
-	automatic way described on site does not work, issue is described but without solution
-	class name is not searchable in dialog, also described
+	Running in command line exemplified in scripts.
 	
-To run single test in file:
-	manually create run configuration, with test name
-	how to do it in test that doesn't have name?
+	Running in scala REPL
+		
+		Run console
+			scala -cp ./bin:./lib/scalatest_2.11-2.2.4.jar
+		
+		In REPL
+			import org.scalatest._
+			import testing.example._
+			run(new ExampleSpec)
+			
