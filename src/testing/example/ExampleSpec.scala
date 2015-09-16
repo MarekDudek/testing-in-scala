@@ -1,4 +1,4 @@
-package testing
+package testing.example
 
 import collection.mutable.Stack
 import org.scalatest._
