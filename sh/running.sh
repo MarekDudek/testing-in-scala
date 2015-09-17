@@ -2,9 +2,9 @@
 
 	
 ## Whole package with subpackages
-#scala -cp lib/scalatest_2.11-2.2.4.jar org.scalatest.tools.Runner -R bin \
-#	-o \
-#	-w testing
+scala -cp lib/scalatest_2.11-2.2.4.jar org.scalatest.tools.Runner -R bin \
+	-o \
+	-w testing
 
 ## Whole package without subpackages
 #scala -cp lib/scalatest_2.11-2.2.4.jar org.scalatest.tools.Runner -R bin \
