@@ -9,14 +9,20 @@ class OverridingWithFixtureMehtod extends FlatSpec {
 
   override def withFixture(test: NoArgTest): Outcome = {
 
-    val file = new File("test.txt")
+    val file = new File("trash/test.txt")
     val writer = new PrintWriter(file)
-    writer write "some content"
+
+    val outcome = super.withFixture(test) match {
+      case failed: Failed =>
+        failed
+      case other =>
+        val name = test.name
+        writer write s"Test '$name' didn't fail.\n"
+
+        other
+    }
+
     writer close
-
-    val outcome = super.withFixture(test)
-
-    file.delete
 
     outcome
   }
