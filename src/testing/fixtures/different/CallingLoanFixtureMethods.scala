@@ -9,7 +9,7 @@ class CallingLoanFixtureMethods extends FlatSpec {
   def withFile(testCode: (File, FileWriter) => Any) {
 
     val file = new File("trash/loan-pattern.txt")
-    val writer = new FileWriter(file)
+    val writer = new FileWriter(file, true)
 
     try
       testCode(file, writer)
@@ -43,7 +43,7 @@ class CallingLoanFixtureMethods extends FlatSpec {
     withFile { (file, writer) =>
       withDatabase { db =>
         db("two") = 2
-        writer write "operaton on file #2\n"
+        writer write "operation on file #3\n"
         assert(2 + 2 === 4)
       }
     }
