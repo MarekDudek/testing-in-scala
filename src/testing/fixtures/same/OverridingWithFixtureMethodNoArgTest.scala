@@ -1,9 +1,7 @@
-package testing.fixtures.different
+package testing.fixtures.same
 
 import org.scalatest._
 import java.io._
-
-import scala.language.postfixOps
 
 class OverridingWithFixtureMethodNoArgTest extends FlatSpec {
 
