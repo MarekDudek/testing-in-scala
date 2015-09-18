@@ -1,8 +1,9 @@
-package testing.fixtures.same
+package testing.fixtures.composing
 
 import org.scalatest._
 import scala.collection.mutable.ListBuffer
-import scala.language.postfixOps
+
+import language.postfixOps
 
 class ComposingFixturesByStackingTraits extends FlatSpec with Builder with Buffer {
 
@@ -31,7 +32,7 @@ class MixingOnlyBuffer extends FlatSpec with Buffer {
   }
 }
 
-protected trait Builder extends SuiteMixin {
+trait Builder extends SuiteMixin {
 
   this: Suite =>
 
@@ -46,7 +47,7 @@ protected trait Builder extends SuiteMixin {
   }
 }
 
-protected trait Buffer extends SuiteMixin {
+trait Buffer extends SuiteMixin {
 
   this: Suite =>
 

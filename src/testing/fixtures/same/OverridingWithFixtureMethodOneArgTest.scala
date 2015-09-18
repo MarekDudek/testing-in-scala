@@ -19,7 +19,7 @@ class OverridingWithFixtureMethodOneArgTest extends fixture.FlatSpec {
     val fixture = FixtureParam(file, writer)
 
     try
-      withFixture(test.toNoArgTest(fixture))
+      withFixture(test toNoArgTest fixture)
     finally
       writer close
   }

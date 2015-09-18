@@ -28,23 +28,27 @@ class CallingLoanFixtureMethods extends FlatSpec {
   }
 
   "This test" should "do something with file" in
-    withFile { (file, writer) =>
-      writer write "operation on file #1\n"
-      assert(2 + 2 === 4)
+    withFile {
+      (file, writer) =>
+        writer write "operation on file #1\n"
+        assert(2 + 2 === 4)
     }
 
   "This test" should "do something with database" in
-    withDatabase { db =>
-      db("one") = 1
-      assert(2 + 2 === 4)
+    withDatabase {
+      db =>
+        db("one") = 1
+        assert(2 + 2 === 4)
     }
 
   "This test" should "do something both with file and database" in
-    withFile { (file, writer) =>
-      withDatabase { db =>
-        db("two") = 2
-        writer write "operation on file #3\n"
-        assert(2 + 2 === 4)
-      }
+    withFile {
+      (file, writer) =>
+        withDatabase {
+          db =>
+            db("two") = 2
+            writer write "operation on file #3\n"
+            assert(2 + 2 === 4)
+        }
     }
 }

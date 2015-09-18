@@ -6,30 +6,36 @@ import scala.language.reflectiveCalls
 
 class CallingGetFixtureMethods extends FlatSpec {
 
-  def fixture = new {
+  def builderFixture = new {
     val builder = new StringBuilder("one")
-    val list = ListBuffer(1)
+  }
+
+  def bufferFixture = new {
+    val buffer = ListBuffer(1)
   }
 
   "This test" should "use fixture" in {
-    val f = fixture
+    val f = builderFixture
+
     f.builder.append(" two")
     assert(f.builder.toString === "one two")
   }
 
   "This test" should "have independent fixture" in {
-    val f = fixture
-    assert(f.builder.toString === "one")
+    val f = builderFixture
+
+    f.builder.append(" two")
+    assert(f.builder.toString === "one two")
   }
 
   "This test" should "not use fixture at all" in {
-    assert(true)
   }
 
   "This test" should "uses imported members" in {
-    val f = fixture
+    val f = bufferFixture
     import f._
-    list += 2
-    assert(list === ListBuffer(1, 2))
+
+    buffer += 2
+    assert(buffer === ListBuffer(1, 2))
   }
 }

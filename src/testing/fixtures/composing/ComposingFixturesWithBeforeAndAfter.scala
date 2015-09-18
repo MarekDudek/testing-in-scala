@@ -1,8 +1,9 @@
-package testing.fixtures.same
+package testing.fixtures.composing
 
 import org.scalatest._
-import language.postfixOps
 import collection.mutable.ListBuffer
+
+import language.postfixOps
 
 class ComposingFixturesWithBeforeAndAfter extends FlatSpec with Builder2 with Buffer2 {
 
