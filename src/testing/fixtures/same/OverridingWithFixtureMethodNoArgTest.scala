@@ -3,6 +3,8 @@ package testing.fixtures.same
 import org.scalatest._
 import java.io._
 
+import scala.language.postfixOps
+
 class OverridingWithFixtureMethodNoArgTest extends FlatSpec {
 
   override def withFixture(test: NoArgTest): Outcome = {
