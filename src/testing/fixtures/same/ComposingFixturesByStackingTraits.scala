@@ -31,7 +31,9 @@ class MixingOnlyBuffer extends FlatSpec with Buffer {
   }
 }
 
-trait Builder extends SuiteMixin { this: Suite =>
+protected trait Builder extends SuiteMixin {
+
+  this: Suite =>
 
   val builder = new StringBuilder
 
@@ -44,7 +46,9 @@ trait Builder extends SuiteMixin { this: Suite =>
   }
 }
 
-trait Buffer extends SuiteMixin { this: Suite =>
+protected trait Buffer extends SuiteMixin {
+
+  this: Suite =>
 
   val buffer = new ListBuffer[Int]
 

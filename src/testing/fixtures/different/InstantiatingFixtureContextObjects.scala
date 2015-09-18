@@ -5,7 +5,7 @@ import collection.mutable.ListBuffer
 
 class InstantiatingFixtureContextObjects extends FlatSpec {
 
-  trait Builder {
+  protected trait Builder {
     val builder = new StringBuilder("one")
   }
 
