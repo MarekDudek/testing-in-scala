@@ -11,8 +11,6 @@ class CallingGetFixtureMethods extends FlatSpec {
     val list = ListBuffer(1)
   }
 
-  import scala.language.reflectiveCalls
-
   "This test" should "use fixture" in {
     val f = fixture
     f.builder.append(" two")

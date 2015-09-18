@@ -38,3 +38,13 @@ TODO:
 		tolerance
 		enforce type constraints
 	assert compiles
+	
+Styles
+	do all styles of tests allow the same functionality or do they differ?
+	
+Fixtures
+	I
+		on-demand 
+		automatic for all tests
+	II
+	

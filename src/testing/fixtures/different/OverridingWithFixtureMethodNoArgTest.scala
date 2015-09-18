@@ -5,7 +5,7 @@ import java.io._
 
 import scala.language.postfixOps
 
-class OverridingWithFixtureMehtod extends FlatSpec {
+class OverridingWithFixtureMethodNoArgTest extends FlatSpec {
 
   override def withFixture(test: NoArgTest): Outcome = {
 
@@ -14,18 +14,17 @@ class OverridingWithFixtureMehtod extends FlatSpec {
     val file = new File("trash/test.txt")
     val writer = new PrintWriter(file)
 
-    val outcome = super.withFixture(test) match {
-      case failed: Failed =>
-        writer write s"Test '$name' failed.\n"
-        failed
-      case other =>
-        writer write s"Test '$name' didn't fail.\n"
-        other
-    }
-
-    writer close
-
-    outcome
+    try
+      super.withFixture(test) match {
+        case failed: Failed =>
+          writer write s"Test '$name' failed.\n"
+          failed
+        case other =>
+          writer write s"Test '$name' didn't fail.\n"
+          other
+      }
+    finally
+      writer close
   }
 
   "This test" should "do something but not necessarily" in {
