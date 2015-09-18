@@ -13,6 +13,21 @@ class ComposingFixturesByStackingTraits extends FlatSpec with Builder with Buffe
 
   "This test" should "also have access to builder" in {
     assert(builder.toString === "one")
+    assert(buffer === ListBuffer(1))
+  }
+}
+
+class MixingOnlyBuilder extends FlatSpec with Builder {
+
+  "This test" should "have access to builder" in {
+    assert(builder.toString === "one")
+  }
+}
+
+class MixingOnlyBuffer extends FlatSpec with Buffer {
+
+  "This test" should "have access to builder" in {
+    assert(buffer === ListBuffer(1))
   }
 }
 
