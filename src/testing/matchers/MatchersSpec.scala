@@ -33,4 +33,19 @@ class MatchersSpec extends FlatSpec with Matchers {
     sqrt(2) mustBe 1.41 +- 0.01
     sqrt(2) must be(1.41 +- 0.01)
   }
+
+  it should "show how to compare arrays" in {
+
+    Array(1, 2) mustEqual Array(1, 2)
+    Array(1, 2) mustBe Array(1, 2)
+
+    Array(1, 2) == Array(1, 2) mustEqual false
+  }
+
+  it should "show supplying implicit parameters explicitly" in {
+
+    import org.scalactic.StringNormalizations._
+
+    "Hi" must equal("hi")(after being lowerCased)
+  }
 }
