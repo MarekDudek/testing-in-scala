@@ -66,4 +66,23 @@ class MatchersSpec extends FlatSpec with Matchers {
     list must have size 3
     list must have length 3
   }
+
+  it should "show checking strings" in {
+
+    "string" must startWith("str")
+    "string" must endWith("ing")
+    "string" must include("ri")
+
+    "string" must startWith regex "s.r"
+    "string" must endWith regex "i?ng"
+    "string" must include regex "r*"
+
+    "string" should fullyMatch regex "s.*n."
+
+    "string" must startWith regex ("s(.*)i(.?n)" withGroups ("tr", "n"))
+    "string" must endWith regex ("(t.*)i(.*g)" withGroups ("tr", "ng"))
+    "string" must include regex ("(t.*)i(.*n)" withGroups ("tr", "n"))
+
+    "string" should fullyMatch regex ("s(t.*)(i.*)g" withGroups ("tr", "in"))
+  }
 }
