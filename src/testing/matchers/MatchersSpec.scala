@@ -4,6 +4,11 @@ import org.scalatest._
 import Matchers._
 import MustMatchers._
 
+import java.io._
+import java.util.ArrayList
+
+import language.postfixOps
+
 class MatchersSpec extends FlatSpec with Matchers {
 
   "This test" should "shows all options" in {
@@ -85,12 +90,44 @@ class MatchersSpec extends FlatSpec with Matchers {
 
     "string" should fullyMatch regex ("s(t.*)(i.*)g" withGroups ("tr", "in"))
   }
-  
+
   it should "show greater and less then comparisons" in {
-    
+
     1 must be > 0
     1 must be < 2
     1 must be >= 1
     1 must be <= 1
+  }
+
+  class SomeClass(val good: Boolean)
+
+  it should "check boolean property" in {
+
+    val some = new SomeClass(true)
+
+    assert(some.good === true)
+    some mustBe 'good
+
+    val dir = new File("src")
+
+    assert(dir isDirectory)
+    dir mustBe 'directory
+
+    val file = new File(".gitignore")
+
+    assert(file isFile)
+    file mustBe 'file
+  }
+
+  it should "check object's class" in {
+
+    val some = new SomeClass(true)
+
+    some mustBe a[SomeClass]
+
+    val list = new ArrayList[Int]
+
+    list mustBe an[ArrayList[_]]
+    list mustBe a[java.util.List[_]]
   }
 }
