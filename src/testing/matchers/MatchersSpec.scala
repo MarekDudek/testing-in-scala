@@ -85,4 +85,12 @@ class MatchersSpec extends FlatSpec with Matchers {
 
     "string" should fullyMatch regex ("s(t.*)(i.*)g" withGroups ("tr", "in"))
   }
+  
+  it should "show greater and less then comparisons" in {
+    
+    1 must be > 0
+    1 must be < 2
+    1 must be >= 1
+    1 must be <= 1
+  }
 }
