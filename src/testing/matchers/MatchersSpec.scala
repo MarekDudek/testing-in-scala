@@ -48,4 +48,22 @@ class MatchersSpec extends FlatSpec with Matchers {
 
     "Hi" must equal("hi")(after being lowerCased)
   }
+
+  it should "show checking size and length" in {
+
+    "string" must have size 6
+    "string" must have length 6
+
+    Array(1, 2, 3) must have size 3
+    Array(1, 2, 3) must have length 3
+
+    List(1, 2, 3, 4) must have size 4
+    List(1, 2, 3, 4) must have length 4
+
+    val list = new java.util.ArrayList[Int]()
+    list add 1; list add 2; list add 3
+
+    list must have size 3
+    list must have length 3
+  }
 }
