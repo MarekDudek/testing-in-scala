@@ -39,7 +39,19 @@ class MatchersSpec extends FlatSpec with Matchers {
     sqrt(2) must be(1.41 +- 0.01)
   }
 
-  it should "show how to compare arrays" in {
+  it should "use negation" in {
+
+    2 + 2 should not equal (5)
+    2 + 2 must not equal (5)
+
+    2 + 2 should !==(6)
+    2 + 2 must !==(6)
+
+    2 + 2 should not be (7)
+    2 + 2 must not be (7)
+  }
+
+  it should "compare arrays" in {
 
     Array(1, 2) mustEqual Array(1, 2)
     Array(1, 2) mustBe Array(1, 2)
@@ -71,16 +83,47 @@ class MatchersSpec extends FlatSpec with Matchers {
     list must have size 3
     list must have length 3
   }
-  
+
   it should "check for emptiness" in {
-    
+
     List() shouldBe empty
-    
+
     "" mustBe empty
-    
+
     Array() mustBe empty
-    
+
     new ArrayList mustBe empty
+  }
+
+  it should "check for belonging" in {
+
+    Array(1, 2, 3) must contain(2)
+    "string" must contain('r')
+    List("one", "two", "three") must contain("two")
+    Map('a' -> 1, 'b' -> 2, 'c' -> 3) must contain('b' -> 2)
+    Some(2) must contain(2)
+
+    import org.scalactic.StringNormalizations._
+
+    (List("One", "Two", "Three") must contain("two"))(after being lowerCased)
+  }
+
+  it should "check for more complicated cases of belonging" in {
+
+    val list = List(1, 2, 3)
+
+    list must contain oneOf (3, 4)
+    list must not contain oneOf(2, 3)
+
+    list must contain atLeastOneOf (2, 3)
+    list must contain atMostOneOf (3, 4)
+
+    list must contain noneOf (4, 5)
+    list must contain allOf (3, 1, 2)
+
+    list must contain theSameElementsAs List(2, 1, 3)
+
+    List(1, 2, 3, 2, 1) must contain only (1, 2, 3)
   }
 
   it should "check strings" in {
