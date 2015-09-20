@@ -26,7 +26,7 @@ class MatchersSpec extends FlatSpec with Matchers {
     2 + 2 mustBe 4
   }
 
-  it should "show how you can customize equality" in {
+  it should "customize equality to check with tolerance" in {
 
     import scala.math._
 
@@ -47,14 +47,14 @@ class MatchersSpec extends FlatSpec with Matchers {
     Array(1, 2) == Array(1, 2) mustEqual false
   }
 
-  it should "show supplying implicit parameters explicitly" in {
+  it should "compare string after normalization" in {
 
     import org.scalactic.StringNormalizations._
 
     "Hi" must equal("hi")(after being lowerCased)
   }
 
-  it should "show checking size and length" in {
+  it should "check size and length" in {
 
     "string" must have size 6
     "string" must have length 6
@@ -65,14 +65,25 @@ class MatchersSpec extends FlatSpec with Matchers {
     List(1, 2, 3, 4) must have size 4
     List(1, 2, 3, 4) must have length 4
 
-    val list = new java.util.ArrayList[Int]()
+    val list = new ArrayList[Int]
     list add 1; list add 2; list add 3
 
     list must have size 3
     list must have length 3
   }
+  
+  it should "check for emptiness" in {
+    
+    List() shouldBe empty
+    
+    "" mustBe empty
+    
+    Array() mustBe empty
+    
+    new ArrayList mustBe empty
+  }
 
-  it should "show checking strings" in {
+  it should "check strings" in {
 
     "string" must startWith("str")
     "string" must endWith("ing")
@@ -129,5 +140,13 @@ class MatchersSpec extends FlatSpec with Matchers {
 
     list mustBe an[ArrayList[_]]
     list mustBe a[java.util.List[_]]
+  }
+
+  it should "check object identity" in {
+
+    val foo = List(1)
+    val bar = foo
+
+    bar must be theSameInstanceAs foo
   }
 }
