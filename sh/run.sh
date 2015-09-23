@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+mkdir -p trash
 	
 ## Whole package with subpackages
 scala -cp lib/scalatest_2.11-2.2.4.jar org.scalatest.tools.Runner -R bin \
